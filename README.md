@@ -18,15 +18,15 @@ sudo pacman -S playerctl
 
 
 ### Installation 
-#### 1.Install the python library using pip
+#### 1. Install the python library using pip
 ```
 pip install beautifulsoup4 requests optspec 
 ```
-#### 2.Clone this repo to a folder 
+#### 2. Clone this repo to a folder 
 ```
 git clone https://www.github.com/dheerajshenoy/getlyrics.git
 ```
-#### 3.Open the getlyrics folder and run the install.sh script 
+#### 3. Open the getlyrics folder and run the install.sh script 
 ```
 chmod +x install.sh && ./install.sh 
 ```
