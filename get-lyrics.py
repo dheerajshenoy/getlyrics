@@ -1,12 +1,17 @@
 from depends import *  
 
+
+A = ""
 def usage_menu():
-    print("usage:\ngetlyrics [OPTIONS]...\n-h, --help --> This Help Menu\n-S, --spotify --> Returns the lyrics of the current spotify song if spotify is PLAYING\n-m, --mysong --> Returns the lyrics of the song specified after this argument within \"\"\n-o, --output --> Outputs the lyrics to the specified file ") 
+    print("usage:\ngetlyrics [OPTIONS]...\n-h, --help --> This Help Menu\n-S, --spotify --> Returns the lyrics of the current spotify song if spotify is PLAYING\n-m, --mysong --> Returns the lyrics of the song specified after this argument within \"\"\n") 
 
 def opSong(artist,song_name):
+
     artist = artist.strip('\n')
     song_name = song_name.strip('\n')
     song_name = song_name.replace("'",'')
+    SN = song_name 
+    ART = artist 
     print("\nFINDING LYRICS FOR " + artist.capitalize() + " " + song_name.capitalize())
     if("Remaster" in song_name or "Alternate Mix" in song_name or "Rough Mix" in song_name):
         p = imp.pos('-',song_name)
@@ -38,8 +43,8 @@ def opSong(artist,song_name):
 
 def get_lyrics():
     argv = sys.argv[1:]
-    short_opts = '-S -m: -h -o:'
-    long_opts = '--spotify --mysong: --help --output:'
+    short_opts = '-S -m: -h'
+    long_opts = '--spotify --mysong: --help'
     try:
         opts, args = getopt.getopt(argv, short_opts, long_opts)
         
@@ -58,16 +63,6 @@ def get_lyrics():
             elif opt in ('-h', '--help'):
                 usage_menu()
 
-            elif opt in ('-o', '--output'):
-                f = arg
-                if(f == ''):
-                    print("FILE NAME NOT SPECIFIED!!")
-                else:
-                    F = f + '.txt'
-                    with open(F,'a+') as w:
-                        global A
-                        w.write(A)
-                        print("Successfully written to file")
     except getopt.GetoptError as err:
         usage_menu()
         sys.exit(2)
