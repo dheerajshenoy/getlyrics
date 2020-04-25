@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+
+player=$(pgrep -x "spotify")
+
+if [[ "$player" == "" && "$1" == "" ]]; then
+	echo "Spotify is not running"
+
+elif [[ "$player" == "" && "$1" != "" ]]; then 
+	python ~/.getlyrics/get-lyrics.py -m "$1"
+	
+else 
+	python ~/.getlyrics/get-lyrics.py -S
+fi
