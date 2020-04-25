@@ -32,6 +32,13 @@ chmod +x install.sh && ./install.sh
 ```
 #### 4. Installation is done
 
+### ALL IN ONE INSTALLATION 
+#### Copy paste the following 
+```
+pip install beautifulsoup4 requests optspec && git clone https://www.github.com/dheerajshenoy/getlyrics.git && cd getlyrics &&
+chmod +x install.sh && ./install.sh 
+```
+
 ### Usage 
 #### Getting lyrics for the currently playing spotify song 
 ```
