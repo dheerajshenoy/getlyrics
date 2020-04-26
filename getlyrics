@@ -5,7 +5,7 @@ player=$(pgrep -x "spotify")
 if [[ "$player" == "" && "$1" == "" ]]; then
 	echo "Spotify is not running"
 
-elif [[ "$player" == "" && "$1" != "" && "$1" != "-h" && "$1" != "-o" ]]; then 
+elif [[ "$1" != "" && "$1" != "-h" && "$1" != "-o" ]]; then 
 	python ~/.getlyrics/get-lyrics.py -m "$1"
 
 elif [[ "$1" == "-h" ]];then

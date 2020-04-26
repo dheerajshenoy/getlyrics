@@ -3,15 +3,11 @@ from depends import *
 
 A = ""
 def usage_menu():
-    print("usage:\ngetlyrics [OPTIONS]...\n-h, --help --> This Help Menu\n-S, --spotify --> Returns the lyrics of the current spotify song if spotify is PLAYING\n-m, --mysong --> Returns the lyrics of the song specified after this argument within \"\"\n") 
-
+    print("usage:\ngetlyrics [OPTIONS]...\n-h, --help --> This Help Menu\nFor SPOTIFY LYRICS --> Just run the program without any arguments\nFor other songs --> Run the program with song name as the argument within DOUBLE QUOTES\nEXAMPLE: getlyrics \"tool lateralus\"\n")
 def opSong(artist,song_name):
-
     artist = artist.strip('\n')
     song_name = song_name.strip('\n')
     song_name = song_name.replace("'",'')
-    SN = song_name 
-    ART = artist 
     print("\nFINDING LYRICS FOR " + artist.capitalize() + " " + song_name.capitalize())
     if("Remaster" in song_name or "Alternate Mix" in song_name or "Rough Mix" in song_name):
         p = imp.pos('-',song_name)
@@ -25,7 +21,6 @@ def opSong(artist,song_name):
     else:
         NAME = artist.replace(' ','-') + '-' + song_name.replace(' ','-') 
         NAME = str(NAME) + '-lyrics'
-        print('\n' + artist + ' ' +  song_name) 
     respond = requests.get("https://www.genius.com/" + NAME)
     try:
         if(respond.status_code == 200):
@@ -50,13 +45,9 @@ def get_lyrics():
         
         for opt, arg in opts:
             if opt in ('-S', '--spotify'):
-                if(os.popen('playerctl -p spotify status') == "Playing"):
-                    artist = os.popen('playerctl -p spotify metadata artist').read()
-                    song_name = os.popen('playerctl -p spotify metadata title').read()
-                else:
-                    sys.exit(1)
+                artist = os.popen('playerctl -p spotify metadata artist').read()
+                song_name = os.popen('playerctl -p spotify metadata title').read()
                 opSong(artist,song_name)
-
             elif opt in ('-m', '--mysong'):
                 opSong(arg,'')
 
