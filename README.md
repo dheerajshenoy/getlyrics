@@ -7,12 +7,13 @@ CLI lyrics program using **Python**, **playerctl**
 - requests 
 - subprocess (Pre-Installed with standard python library)
 - getopt 
+- python-lxml
 
 #### 2. Software required to be installed 
 Playerctl 
 #### On Arch and related distro use the following 
 ``` 
-sudo pacman -S playerctl 
+sudo pacman -S playerctl python-lxml
 ```
 #### For the Debian/Ubuntu you need the deb package. (GOOGLE IT)
 
